@@ -3,12 +3,13 @@
 import sys
 import yaml
 
+
 x = input('Welcome Dorje, plese enter your password:  ')
 
-config_path = '/Users/dorje/Projects/Sindria/Python/authentication_exercise/config.yaml'
+config_path = '/Users/dorje/Projects/Sindria/dorjecurreli/aubergina/config.yaml'
 
 with open(config_path, 'r') as f:
-   config = yaml.load(f, Loader=yaml.FullLoader)
+    config = yaml.load(f, Loader=yaml.FullLoader)
 
 def auth():
     password = config['config']['key']
@@ -18,3 +19,7 @@ def auth():
         print('Try again')
 auth() 
 
+
+def main():
+    if __name__ == "__main__":
+        main()
