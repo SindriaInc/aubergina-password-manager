@@ -4,7 +4,7 @@ import sys
 import yaml
 
 
-x = input('Welcome Dorje, plese enter your password:  ')
+x = input('Welcome in aubergina password manager \n please enter your password: \n ')
 
 config_path = '/Users/dorje/Projects/Sindria/dorjecurreli/aubergina/config.yaml'
 
