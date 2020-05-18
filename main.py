@@ -3,25 +3,30 @@
 import sys
 import yaml
 
+# Costante percorso file di configurazione
+CONFIG = '/Users/dorje/Projects/Sindria/dorjecurreli/aubergina/config.yaml'
 
-x = input('Welcome in aubergina password manager \n please enter your password: \n ')
 
-config_path = '/Users/dorje/Projects/Sindria/dorjecurreli/aubergina/config.yaml'
-
-with open(config_path, 'r') as f:
-    config = yaml.load(f, Loader=yaml.FullLoader)
-
+# Funzione per l'utenticazione dell'utente
 def auth():
     password = config['config']['key']
-    if(password == x):
+    
+    if (password == x):
         print('You logged in')
     else:
         print('Try again')
 
 
-
+# Main - funzinone princile dove eseguo le mie istruzioni e dove richiamo le altre funzioni
 def main():
+    x = input('Welcome in aubergina password manager \n please enter your password: \n ')
+    
+    with open(CONFIG, 'r') as f:
+        config = yaml.load(f, Loader=yaml.FullLoader)
+    
     auth()
 
+
+# Execute - esecuzione del programma
 if __name__ == "__main__":
         main()
