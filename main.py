@@ -8,7 +8,7 @@ CONFIG = '/Users/dorje/Projects/Sindria/dorjecurreli/aubergina/config.yaml'
 
 
 # Funzione per l'utenticazione dell'utente
-def auth():
+def auth(config):
     password = config['config']['key']
     
     if (password == x):
@@ -24,7 +24,7 @@ def main():
     with open(CONFIG, 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
     
-    auth()
+    auth(config)
 
 
 # Execute - esecuzione del programma
