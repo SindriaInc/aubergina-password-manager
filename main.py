@@ -17,9 +17,11 @@ def auth():
         print('You logged in')
     else:
         print('Try again')
-auth() 
+
 
 
 def main():
-    if __name__ == "__main__":
+    auth()
+
+if __name__ == "__main__":
         main()
