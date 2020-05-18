@@ -17,7 +17,7 @@ def auth(config):
         print('Try again')
 
 
-# Main - funzinone princile dove eseguo le mie istruzioni e dove richiamo le altre funzioni
+# Main - funzione principale dove eseguo le mie istruzioni e dove richiamo le altre funzioni
 def main():
     x = input('Welcome in aubergina password manager \n please enter your password: \n ')
     
