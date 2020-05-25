@@ -4,7 +4,7 @@ import sys
 import yaml
 
 
-CONFIG = '/Users/dorje/Projects/Sindria/dorjecurreli/aubergina/config.yaml'
+CONFIG = '/Users/dorje/Projects/Sindria/dorjecurreli/aubergina/settings.yml'
 
 def auth(config,x):
     password = config['config']['key']
