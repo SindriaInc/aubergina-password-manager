@@ -27,11 +27,7 @@ def save(file,data):
         yaml.dump(data,f)
         return True
 
-def add_credential():
-
-    i = 0
-    credentials = dict()
-
+def add_credential(i,credentials):
 
     name = input('Insert a name: ')
     username = input('Insert your username: ')
@@ -48,64 +44,21 @@ def add_credential():
         'note': note,
     }
 
-
     credentials[i] = credential
-    i += 1
-
     return credentials
+
 
 def store_credential():
 
     i = 0
     credentials = dict()
-
-    name = input('Insert a name: ')
-    username = input('Insert your username: ')
-    psw = input('Insert your Password: ')
-    url = input('Insert the URL  of your service: ')
-    note = input('Insert optional note: ')
-
-    credential = {
-        'id': i,
-        'name': name,
-        'username': username,
-        'password': psw,
-        'url': url,
-        'note': note,
-    }
-
-    credentials[i] = credential
-    i += 1
-
-
+    credentials = add_credential(i,credentials)
 
     while True:
+        i += 1
         choice = input('Do you want to add a new credential? (y/n) ')
         if (choice == 'y'):
-
-            #i = 0
-            #credentials = dict()
-
-            name = input('Insert a name: ')
-            username = input('Insert your username: ')
-            psw = input('Insert your Password: ')
-            url = input('Insert the URL  of your service: ')
-            note = input('Insert optional note: ')
-
-            credential = {
-                'id': i,
-                'name': name,
-                'username': username,
-                'password': psw,
-                'url': url,
-                'note': note,
-            }
-
-            credentials[i] = credential
-            i += 1
-
-
-
+            credentials = add_credential(i,credentials)
 
 
         if (choice == 'n'):
