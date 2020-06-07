@@ -29,10 +29,6 @@ def save(file,data):
 
 def add_credential(i,credentials):
 
-    #i = 0
-    #credentials = dict()
-
-
     name = input('Insert a name: ')
     username = input('Insert your username: ')
     psw = input('Insert your Password: ')
@@ -59,57 +55,13 @@ def store_credential():
     i = 0
     credentials = dict()
     credentials = add_credential(i,credentials)
-
-    # name = input('Insert a name: ')
-    # username = input('Insert your username: ')
-    # psw = input('Insert your Password: ')
-    # url = input('Insert the URL  of your service: ')
-    # note = input('Insert optional note: ')
-    #
-    # credential = {
-    #     'id': i,
-    #     'name': name,
-    #     'username': username,
-    #     'password': psw,
-    #     'url': url,
-    #     'note': note,
-    # }
-
-    #credentials[i] = credential
     i += 1
-
-
 
     while True:
         choice = input('Do you want to add a new credential? (y/n) ')
         if (choice == 'y'):
-
-            #i = 0
-            #credentials = dict()
             credentials = add_credential(i,credentials)
-
-
-            # name = input('Insert a name: ')
-            # username = input('Insert your username: ')
-            # psw = input('Insert your Password: ')
-            # url = input('Insert the URL  of your service: ')
-            # note = input('Insert optional note: ')
-            #
-            # credential = {
-            #     'id': i,
-            #     'name': name,
-            #     'username': username,
-            #     'password': psw,
-            #     'url': url,
-            #     'note': note,
-            # }
-            #
-            # credentials[i] = credentials
             i += 1
-
-
-
-
 
         if (choice == 'n'):
             break

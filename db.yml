@@ -1,21 +1,7 @@
 0:
   id: 0
-  name: c
-  note: c
-  password: c
-  url: c
-  username: c
-1:
-  id: 1
-  name: b
-  note: b
-  password: b
-  url: b
-  username: b
-2:
-  id: 2
-  name: l
-  note: l
-  password: l
-  url: l
-  username: l
+  name: k
+  note: k
+  password: k
+  url: k
+  username: k
