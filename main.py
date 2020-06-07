@@ -44,25 +44,22 @@ def add_credential(i,credentials):
         'note': note,
     }
 
-
     credentials[i] = credential
-    #i += 1
-
     return credentials
+
 
 def store_credential():
 
     i = 0
     credentials = dict()
     credentials = add_credential(i,credentials)
-    #i += 1
 
     while True:
         i += 1
         choice = input('Do you want to add a new credential? (y/n) ')
         if (choice == 'y'):
             credentials = add_credential(i,credentials)
-            #i += 1
+
 
         if (choice == 'n'):
             break
