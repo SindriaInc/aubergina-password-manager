@@ -27,10 +27,10 @@ def save(file,data):
         yaml.dump(data,f)
         return True
 
-def add_credential():
+def add_credential(i,credentials):
 
-    i = 0
-    credentials = dict()
+    #i = 0
+    #credentials = dict()
 
 
     name = input('Insert a name: ')
@@ -58,23 +58,24 @@ def store_credential():
 
     i = 0
     credentials = dict()
+    credentials = add_credential(i,credentials)
 
-    name = input('Insert a name: ')
-    username = input('Insert your username: ')
-    psw = input('Insert your Password: ')
-    url = input('Insert the URL  of your service: ')
-    note = input('Insert optional note: ')
+    # name = input('Insert a name: ')
+    # username = input('Insert your username: ')
+    # psw = input('Insert your Password: ')
+    # url = input('Insert the URL  of your service: ')
+    # note = input('Insert optional note: ')
+    #
+    # credential = {
+    #     'id': i,
+    #     'name': name,
+    #     'username': username,
+    #     'password': psw,
+    #     'url': url,
+    #     'note': note,
+    # }
 
-    credential = {
-        'id': i,
-        'name': name,
-        'username': username,
-        'password': psw,
-        'url': url,
-        'note': note,
-    }
-
-    credentials[i] = credential
+    #credentials[i] = credential
     i += 1
 
 
@@ -85,23 +86,25 @@ def store_credential():
 
             #i = 0
             #credentials = dict()
+            credentials = add_credential(i,credentials)
 
-            name = input('Insert a name: ')
-            username = input('Insert your username: ')
-            psw = input('Insert your Password: ')
-            url = input('Insert the URL  of your service: ')
-            note = input('Insert optional note: ')
 
-            credential = {
-                'id': i,
-                'name': name,
-                'username': username,
-                'password': psw,
-                'url': url,
-                'note': note,
-            }
-
-            credentials[i] = credential
+            # name = input('Insert a name: ')
+            # username = input('Insert your username: ')
+            # psw = input('Insert your Password: ')
+            # url = input('Insert the URL  of your service: ')
+            # note = input('Insert optional note: ')
+            #
+            # credential = {
+            #     'id': i,
+            #     'name': name,
+            #     'username': username,
+            #     'password': psw,
+            #     'url': url,
+            #     'note': note,
+            # }
+            #
+            # credentials[i] = credentials
             i += 1
 
 
