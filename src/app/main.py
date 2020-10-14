@@ -39,6 +39,9 @@ def add_credential():
     cache_data = load(DATA_STORAGE)
 
     increment_value = 0
+    for increment in cache_data:
+        print(increment)
+        increment_value += 1
 
     # Get data from input
     #id = 666
@@ -58,8 +61,7 @@ def add_credential():
     # Assign a key at the empty dict (credentials) and assign credential as a value.
     # With a value on the [] parentesis we can assign or overwrite existing values on a list or dict.
 
-    #for increment in credential:
-    #    increment_value += 1
+
 
     cache_data[increment_value] = credential
     save(DATA_STORAGE, cache_data)
