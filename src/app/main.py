@@ -25,7 +25,7 @@ def save(storage, credential_data):
     return True
 
 
-def add_credential():
+def add_credential(session):
 
     # Create an empty dict that will contain all the credentials from the credential variable.
 
@@ -64,15 +64,14 @@ def add_credential():
     cache_data[increment_value] = credential
     save(DATA_STORAGE, cache_data)
 
-    new_credential = input(username + ' do you want to add a new credential? y/n ')
+    new_credential = input(session['config']['username'] + ' do you want to add a new credential? y/n ')
     if (new_credential == 'y'):
-        add_credential()
+        add_credential(session)
     elif (new_credential == 'n'):
-        print('Goodbye')
+        main_menu(session)
     else:
         print('Option unavaible')
         sys.exit(2)
-
 
 
 
@@ -84,35 +83,37 @@ def auth(credentials,input_password):
     return False
 
 
+def main_menu(session):
+    # User Option
+
+    user_option = input('Choose a option:\n\na) add credential\nb) exit ')
+
+    if (user_option == 'a'):
+        add_credential(session)
+    elif (user_option == 'b'):
+        print('Goodbye :)')
+        sys.exit(0)
+    else:
+        print('Option unavaible')
+        sys.exit(2)
+
+
 
 def main():
     print('# Aubergina Password Manager #')
 
-    data = load(CONFIG)
+    session = load(CONFIG)
 
-
-    fullname = data['config']['fullname']
-    username = data['config']['username']
+    fullname = session['config']['fullname']
+    username = session['config']['username']
 
     print('Welcome Sir ' + fullname + ' your username is ' + username + " \n\nInsert your password for authentication: ")
 
     password = input('Enter the Password: ')
 
-
-    if (auth(data,password)):
-        print('Hi ' + username + '. You logged in successfully')
-        # User Option
-
-        user_option = input('Choose a option:\n\na) add credential\nb) exit ')
-
-        if (user_option == 'a'):
-            add_credential()
-        elif (user_option == 'b'):
-            print('Goodbye :)')
-            sys.exit(0)
-        else:
-            print('Option unavaible')
-            sys.exit(2)
+    if (auth(session,password)):
+       print('Hi ' + username + '. You logged in successfully')
+       main_menu(session)
     else:
         print('stronzo')
         sys.exit(1)
