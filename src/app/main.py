@@ -28,6 +28,7 @@ def save(storage, credential_data):
 def add_credential():
 
     # Create an empty dict that will contain all the credentials from the credential variable.
+
     #cache_credentials = dict()
 
     # Load existing credentials data
@@ -60,16 +61,17 @@ def add_credential():
     }
     # Assign a key at the empty dict (credentials) and assign credential as a value.
     # With a value on the [] parentesis we can assign or overwrite existing values on a list or dict.
-
-
-
     cache_data[increment_value] = credential
     save(DATA_STORAGE, cache_data)
 
-
-
-    #TODO: append more then one credential into the data.yml (check old code and loops)
-
+    new_credential = input(username + ' do you want to add a new credential? y/n ')
+    if (new_credential == 'y'):
+        add_credential()
+    elif (new_credential == 'n'):
+        print('Goodbye')
+    else:
+        print('Option unavaible')
+        sys.exit(2)
 
 
 

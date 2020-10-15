@@ -1,8 +1,30 @@
 #!/usr/bin/env python3
 
-l = [[1, 'A'], [1, 'B'], [2, 'C']]
-d = {}
-for key, val in l:
-    d.setdefault(key, []).append(val)
+fruit = {
+    0: {
+        "banana": 1.00,
+        "apple": 1.53,
+        "kiwi": 2.00,
+        "avocado": 3.23,
+        "mango": 2.33,
+        "pineapple": 1.44,
+        "strawberries": 1.95,
+        "melon": 2.34,
+        "grapes": 0.98
+    },
+    1: {
+        "banana": 1.00,
+        "apple": 1.53,
+        "kiwi": 2.00,
+        "avocado": 3.23,
+        "mango": 2.33,
+        "pineapple": 1.44,
+        "strawberries": 1.95,
+        "melon": 2.34,
+        "grapes": 0.7
+    }
+}
 
-print(d)
+
+for k,v in fruit.items():
+    print(v)
