@@ -82,15 +82,64 @@ def auth(credentials,input_password):
         return True
     return False
 
+def edit_credential(session):
+
+    cache_data = load(DATA_STORAGE)
+
+    id = int(input('Insert the id of the value you want to modify: '))
+
+    credential = cache_data[id]
+    print(credential)
+
+    label = input('Insert your label: ')
+    username = input('Insert your username: ')
+    password = input('Insert your password: ')
+    note = input('Note: ')
+
+    if (label != ''):
+        credential['label'] = label
+
+    if (username != ''):
+        credential['username'] = username
+
+    if (password != ''):
+        credential['password'] = password
+
+    if (note != ''):
+        credential['note'] = note
+
+    save(DATA_STORAGE, cache_data)
+    main_menu(session)
+
+def delete_credential(session):
+
+    cache_data = load(DATA_STORAGE)
+
+    id = int(input('Insert the id of the value you want to delete: '))
+
+    cache_data.pop(id, None)
+
+    save(DATA_STORAGE, cache_data)
+    main_menu(session)
+
+
+
+
+
+
 
 def main_menu(session):
     # User Option
 
-    user_option = input('Choose a option:\n\na) add credential\nb) exit ')
+    user_option = input('Choose a option:\n\na) add credential\nb) edit credential\nc) delete credential\nz) exit \n\n')
 
     if (user_option == 'a'):
         add_credential(session)
     elif (user_option == 'b'):
+        edit_credential(session)
+    elif (user_option == 'c'):
+        delete_credential(session)
+    elif (user_option == 'z'):
         print('Goodbye :)')
         sys.exit(0)
     else:

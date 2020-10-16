@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+change_fruits = input('Neu fruit name: ')
+
+
 fruit = {
     0: {
         "banana": 1.00,
@@ -27,4 +30,5 @@ fruit = {
 
 
 for k,v in fruit.items():
-    print(v)
+    fruit[1]['banana'] = change_fruits
+    print(fruit)
