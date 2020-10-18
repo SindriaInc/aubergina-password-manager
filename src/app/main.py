@@ -3,6 +3,7 @@
 import sys
 import os
 import yaml
+import hashlib
 
 CONFIG = '/var/www/app/config/app.yml'
 DATA_STORAGE = '/var/www/app/storage/data/data.yml'
@@ -24,12 +25,14 @@ def save(storage, credential_data):
        yaml.dump(credential_data,f)
     return True
 
+def string_to_hash(string):
+    password = string.encode('utf-8')
+    hashed_password = hashlib.sha256(password).hexdigest()
+    return hashed_password
+
+
 
 def add_credential(session):
-
-    # Create an empty dict that will contain all the credentials from the credential variable.
-
-    #cache_credentials = dict()
 
     # Load existing credentials data
     cache_data = load(DATA_STORAGE)
@@ -41,11 +44,10 @@ def add_credential(session):
 
     increment_value = 0
     for increment in cache_data:
-        print(increment)
         increment_value += 1
 
     # Get data from input
-    #id = 666
+
     label = input('Insert your label: ')
     username = input('Insert your username: ')
     password = input('Insert your password: ')
@@ -74,10 +76,32 @@ def add_credential(session):
         sys.exit(2)
 
 
+def register():
+    print('Welcome in Aubergina Password Manager.\n')
+
+    fullname = input('Set your Fullname: ')
+    username = input('Set your Username: ')
+    password = input('Set your Password: ')
+    hashed_password = string_to_hash(password)
+
+    config = {
+        'config': {
+            'fullname': fullname,
+            'username': username,
+            'psw': hashed_password
+        }
+    }
+
+
+    save(CONFIG, config)
+
+
 
 # Authentication
 def auth(credentials,input_password):
+
     config_password  = credentials['config']['psw']
+
     if (input_password == config_password):
         return True
     return False
@@ -89,7 +113,6 @@ def edit_credential(session):
     id = int(input('Insert the id of the value you want to modify: '))
 
     credential = cache_data[id]
-    print(credential)
 
     label = input('Insert your label: ')
     username = input('Insert your username: ')
@@ -122,16 +145,45 @@ def delete_credential(session):
     save(DATA_STORAGE, cache_data)
     main_menu(session)
 
+def show_credentials(session):
+
+    print("Aviable credentials: \n")
+    cache_data = load(DATA_STORAGE)
+
+    for k,credential in cache_data.items():
+        print("ID: " + str(credential['id']))
+        print("Label: " + credential['label'])
+        print("\n")
+
+    main_menu(session)
+
+def show_credential(session):
+
+    id = int(input('Insert the ID from the credential you want to display: \n'))
+
+    cache_data = load(DATA_STORAGE)
+
+    if (not id in cache_data):
+        print('Credential not aviable.')
+        main_menu(session)
+
+    print('Credential: \n')
+
+    print('ID: '+ str(cache_data[id]['id']))
+    print('Label: '+ cache_data[id]['label'])
+    print('Username: '+ cache_data[id]['username'])
+    print('Password: '+ cache_data[id]['password'])
+    print('Note: '+ cache_data[id]['note']+'\n')
 
 
-
+    main_menu(session)
 
 
 
 def main_menu(session):
     # User Option
 
-    user_option = input('Choose a option:\n\na) add credential\nb) edit credential\nc) delete credential\nz) exit \n\n')
+    user_option = input('Choose a option:\n\na) add credential\nb) edit credential\nc) delete credential\nd) show credentials\ne) show credential\nz) exit \n\n')
 
     if (user_option == 'a'):
         add_credential(session)
@@ -139,6 +191,10 @@ def main_menu(session):
         edit_credential(session)
     elif (user_option == 'c'):
         delete_credential(session)
+    elif (user_option == 'd'):
+        show_credentials(session)
+    elif (user_option == 'e'):
+        show_credential(session)
     elif (user_option == 'z'):
         print('Goodbye :)')
         sys.exit(0)
@@ -151,6 +207,10 @@ def main_menu(session):
 def main():
     print('# Aubergina Password Manager #')
 
+    cache_config = load(CONFIG)
+    if (cache_config == None):
+        register()
+
     session = load(CONFIG)
 
     fullname = session['config']['fullname']
@@ -159,8 +219,10 @@ def main():
     print('Welcome Sir ' + fullname + ' your username is ' + username + " \n\nInsert your password for authentication: ")
 
     password = input('Enter the Password: ')
+    hashed_password = string_to_hash(password)
 
-    if (auth(session,password)):
+
+    if (auth(session,hashed_password)):
        print('Hi ' + username + '. You logged in successfully')
        main_menu(session)
     else:

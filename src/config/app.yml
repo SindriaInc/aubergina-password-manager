@@ -1,8 +1,4 @@
-# Setting Yaml file
-
----
 config:
-  fullname: "Dorje Curreli"
-  username: "dorjecurreli"
-  psw: "dorje"
-
+  fullname: Dorje Curreli
+  psw: 31201ad6bb3065d0e5147fa8dad91a4d8cac92a61b9d7ce7ae30ed606b8003fa
+  username: dorjecurreli
